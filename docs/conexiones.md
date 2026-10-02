@@ -3,7 +3,7 @@
 ## GitHub
 - Repositorio: https://github.com/nivergarah-collab/Pomodoro_Prototipe00 (público).
 - Rama principal: `main`. Rama de trabajo conjunta: `feature/adaptar-al-espacio`.
-- Acceso del agente en la nube: lectura y clonado funcionan. **Escritura rechazada el 2026-10-02 (403)**: la app de Claude en GitHub no está instalada para este repositorio. Solución: https://github.com/apps/claude/installations/select_target → elegir la cuenta `nivergarah-collab` → "Repository access" → agregar `Pomodoro_Prototipe00`; o reconectar GitHub en los ajustes de conectores de claude.ai.
+- Acceso del agente en la nube: lectura, clonado y escritura habilitados. El 2026-10-02 el primer push dio 403 y funcionó tras agregar el repositorio en la instalación de la app de Claude en GitHub. Si vuelve a fallar: https://github.com/apps/claude/installations/select_target → "Repository access", o reconectar GitHub en los conectores de claude.ai.
 - Subida desde el computador: la hace el usuario con `git`.
 
 ## Gemini / Firebase AI

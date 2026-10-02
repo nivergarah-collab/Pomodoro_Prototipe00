@@ -7,16 +7,15 @@
 - Carpeta registrada en el espacio `Android` (`Android/Pomodoro_Prototipe00`).
 - Estructura estándar creada: README, CHANGELOG, `skills/00-iniciar.md`, `docs/` y `scripts/verificar-estructura.ps1`.
 - Revisión inicial del proyecto (ver "Notas de la revisión").
-- Rama de trabajo conjunta: `feature/adaptar-al-espacio`.
+- Rama de trabajo conjunta `feature/adaptar-al-espacio`, subida a GitHub (acceso de escritura habilitado el 2026-10-02).
 
 ## Siguiente
-1. **Usuario:** habilitar el acceso de la app de Claude en GitHub a este repositorio, para que el agente pueda subir la rama (ver "Preguntas pendientes").
+1. **Usuario:** fusionar la rama `feature/adaptar-al-espacio` (pull request) cuando esté conforme.
 2. **Usuario:** colocar en `.github/workflows/` el flujo `pruebas.yml` que entregará Claude (esa ruta es solo del usuario).
 3. Reemplazar las pruebas de ejemplo por pruebas reales de la lógica del temporizador, extrayéndola del `MainViewModel` a una clase Kotlin pura.
 4. Pruebas de la meta diaria y de `StudyRepository` con una base Room en memoria.
 
 ## Preguntas pendientes
-- El push de `feature/adaptar-al-espacio` fue rechazado (403): la app de Claude en GitHub no tiene acceso a este repositorio. Hay que agregarlo en https://github.com/apps/claude/installations/select_target (Repository access) o reconectar GitHub en los ajustes de conectores de claude.ai.
 - ¿Se usará la API de Gemini? `metadata.json` declara la capacidad y `build.gradle.kts` incluye `firebase-ai`, pero el código no la usa. Si no se usa, conviene quitarla (con confirmación).
 
 ## Pruebas
