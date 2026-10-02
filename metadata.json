@@ -1,0 +1,6 @@
+{
+  "name": "PomoStudy",
+  "description": "App interactiva para sesiones de estudio Pomodoro con bloques personalizables, temas, subtemas, temporizador y registro de estadísticas por usuario",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
