@@ -7,6 +7,7 @@
 - Carpeta registrada en el espacio `Android` (`Android/Pomodoro_Prototipe00`).
 - Estructura estándar creada: README, CHANGELOG, `skills/00-iniciar.md`, `docs/` y `scripts/verificar-estructura.ps1`.
 - Revisión inicial del proyecto (ver "Notas de la revisión").
+- Flujos `Pruebas` y `APK` en `.github/workflows/`; el APK de depuración se descarga desde Actions (artefacto `pomostudy-debug-apk`).
 - Rama de trabajo conjunta `feature/adaptar-al-espacio`, subida a GitHub (acceso de escritura habilitado el 2026-10-02).
 
 ## Siguiente
@@ -19,7 +20,7 @@
 - ¿Se usará la API de Gemini? `metadata.json` declara la capacidad y `build.gradle.kts` incluye `firebase-ai`, pero el código no la usa. Si no se usa, conviene quitarla (con confirmación).
 
 ## Pruebas
-Sin ejecutar. Las dos clases de prueba que trae el proyecto son de ejemplo y casi no prueban código de la app.
+2026-10-02: la compilación y el APK de depuración salen bien en GitHub Actions (APK #1 en verde). `ExampleRobolectricTest` fallaba con `@Config(sdk = [36])` (Robolectric 4.16.1 en JDK 17); se bajó a SDK 35. Pendiente confirmar que `Pruebas` quede en verde. Las dos clases de prueba del proyecto son de ejemplo y casi no prueban código de la app.
 
 ## Notas de la revisión
 - Tamaño: unas 5.500 líneas de Kotlin. Los archivos más grandes: `SessionConfigScreen.kt` (787), `WeeklyStudyChart.kt` (642), `DailyGoalComponents.kt` (558), `ActiveTimerScreen.kt` (537), `MainViewModel.kt` (512).
