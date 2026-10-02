@@ -1,0 +1,33 @@
+# Estado · PomoStudy
+
+Última actualización: 2026-10-02
+
+## Hecho
+- Proyecto importado desde Google AI Studio al repositorio https://github.com/nivergarah-collab/Pomodoro_Prototipe00 (commits `b0a8244` y `05a36eb`).
+- Carpeta registrada en el espacio `Android` (`Android/Pomodoro_Prototipe00`).
+- Estructura estándar creada: README, CHANGELOG, `skills/00-iniciar.md`, `docs/` y `scripts/verificar-estructura.ps1`.
+- Revisión inicial del proyecto (ver "Notas de la revisión").
+- Flujos `Pruebas` y `APK` en `.github/workflows/`; el APK de depuración se descarga desde Actions (artefacto `pomostudy-debug-apk`).
+- Rama de trabajo conjunta `feature/adaptar-al-espacio`, subida a GitHub (acceso de escritura habilitado el 2026-10-02).
+
+## Siguiente
+1. **Usuario:** fusionar la rama `feature/adaptar-al-espacio` (pull request) cuando esté conforme.
+2. **Usuario:** colocar en `.github/workflows/` el flujo `pruebas.yml` que entregará Claude (esa ruta es solo del usuario).
+3. Reemplazar las pruebas de ejemplo por pruebas reales de la lógica del temporizador, extrayéndola del `MainViewModel` a una clase Kotlin pura.
+4. Pruebas de la meta diaria y de `StudyRepository` con una base Room en memoria.
+
+## Preguntas pendientes
+- ¿Se usará la API de Gemini? `metadata.json` declara la capacidad y `build.gradle.kts` incluye `firebase-ai`, pero el código no la usa. Si no se usa, conviene quitarla (con confirmación).
+
+## Pruebas
+2026-10-02: la compilación y el APK de depuración salen bien en GitHub Actions (APK #1 en verde). `ExampleRobolectricTest` fallaba con `@Config(sdk = [36])` (Robolectric 4.16.1 en JDK 17); se bajó a SDK 35. Pendiente confirmar que `Pruebas` quede en verde. Las dos clases de prueba del proyecto son de ejemplo y casi no prueban código de la app.
+
+## Notas de la revisión
+- Tamaño: unas 5.500 líneas de Kotlin. Los archivos más grandes: `SessionConfigScreen.kt` (787), `WeeklyStudyChart.kt` (642), `DailyGoalComponents.kt` (558), `ActiveTimerScreen.kt` (537), `MainViewModel.kt` (512).
+- La lógica del temporizador (fases, bloques, avance, cierre de sesión) vive dentro de `MainViewModel`, que hereda de `AndroidViewModel` y depende de Room y de vibración: difícil de probar tal como está.
+- `ExampleUnitTest` repite cálculos propios en vez de llamar a código de la app (solo usa `StudyPreset`). `ExampleRobolectricTest` comprueba el nombre de la app.
+- El proyecto no incluye `gradlew` ni `gradle-wrapper.jar`, solo `gradle-wrapper.properties` (Gradle 9.3.1). La integración continua usa `gradle/actions/setup-gradle` con esa versión.
+- `app/build.gradle.kts` firma también la compilación de depuración con `debug.keystore`, que está en `.gitignore`: sin ese archivo `assembleDebug` y las pruebas pueden fallar. La integración continua lo genera con `keytool`.
+- La firma de lanzamiento lee `KEYSTORE_PATH`, `STORE_PASSWORD` y `KEY_PASSWORD` del entorno; no hay secretos en los archivos. Revisión de credenciales: sin hallazgos (solo la contraseña estándar `android` del almacén de depuración).
+- `google-services.json` no existe; el plugin está en modo `WARN` y `googleServices.missing.passthrough=true`, así que no bloquea la compilación.
+- `allowBackup="true"` en el manifiesto: revisar si conviene, porque la base Room guarda datos de estudio por usuario.
